@@ -1,0 +1,2094 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../style.css" TITLE="Style">
+</head>
+<body>
+<TABLE cellspacing="0" cellpadding="2"><TBODY>
+    <!-- C:\ Programme\ eclipse\ workspace\ oscache\ src\ java\ com\ opensymphony\ oscache\ web\ filter\ CacheFilter.java -->
+  <TR>
+    <TD colspan="6" class="reportHeader">
+    <TABLE width="100%"><TR>
+    <TD valign="top" class="titleText">Clover coverage report -    <DIV class="timestamp"><b>Coverage timestamp:</b>&nbsp;Mo Mrz 6 2006 19:30:45 CET</DIV>
+            <DIV class="navBar"><a href="../../../../../pkgs-summary.html"><b>Overview</b></a>&nbsp;&nbsp;&nbsp;<a href="pkg-summary.html"><b>Package</b></a>&nbsp;&nbsp;&nbsp;<font class="navBarCurrent">File</font></DIV>
+    
+<DIV class="navBarLink">
+&nbsp;&nbsp;&nbsp;
+    <A HREF="../../../../../index.html" TARGET="_top">FRAMES</A>&nbsp;&nbsp;
+<A HREF="CacheFilter.html" TARGET="_top">NO FRAMES</A>&nbsp;&nbsp;
+    </DIV>
+
+</TD>
+         <td class="headerStats" valign="top" width="40%" align="right">
+        <table align="right">
+         <tr>
+           <td nowrap><b>file stats:</b></td>
+           <td align="right"><b>LOC:</b></td>
+           <td align="right">466</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Methods:</b></td>
+           <td align="right">11</td>
+         </tr>
+         <tr>
+           <td></td>
+           <td align="right"><b>NCLOC:</b></td>
+           <td align="right">249</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Classes:</b></td>
+           <td align="right">1</td>
+         </tr>
+      </table>
+     </td>
+    </TR></TABLE>
+   </TD>
+  </TR>
+
+<TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+  <TR>
+    <TD class="graphHeaderLeft"><b>&nbsp;Source file</b></TD>
+    <TD class="graphHeader">Conditionals</TD>
+    <TD class="graphHeader">Statements</TD>
+    <TD class="graphHeader">Methods</TD>
+    <TD class="graphHeader" align="left" colspan="2"><B>TOTAL</B></TD>
+  </TR>   
+  <TR>
+    <TD class="graphItem">
+        	   CacheFilter.java
+	    </TD>
+   
+    <TD class="graphPercent" align="center">0%</TD>
+    <TD class="graphPercent" align="center">0%</TD>
+    <TD class="graphPercent" align="center">0%</TD>
+    <TD class="graphBarLeft" align="center"><B>0%</B></TD>
+    <TD class="graphBar">
+            <TABLE class="barGraph" cellspacing="0">
+        <TBODY>
+          <TR>
+	   	    <TD class="uncovered"><img alt="coverage" src="../../../../../img/trans.gif" width="200" height="12"></TD> 
+	   	  </TR>
+	</TBODY>
+      </TABLE>
+          </TD>
+  </TR> 
+</TBODY></TABLE><TABLE cellspacing="0" cellpadding="0" class="srcView"><TBODY>
+<TR><TD align="right" class="lineCount">
+&nbsp;1</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/*</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;2</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Copyright (c) 2002-2003 by OpenSymphony</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;3</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * All rights reserved.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;4</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;5</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">package</span> com.opensymphony.oscache.web.filter;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;6</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;7</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> com.opensymphony.oscache.base.Cache;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;8</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> com.opensymphony.oscache.base.EntryRefreshPolicy;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;9</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> com.opensymphony.oscache.base.NeedsRefreshException;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;10</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> com.opensymphony.oscache.web.ServletCacheAdministrator;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;11</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;12</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.apache.commons.logging.Log;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;13</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.apache.commons.logging.LogFactory;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;14</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;15</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.IOException;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;16</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;17</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.*;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;18</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;19</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;20</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.jsp.PageContext;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;21</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;22</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;23</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * CacheFilter is a filter that allows for server-side caching of post-processed servlet content.&lt;p&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;24</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;25</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * It also gives great programatic control over refreshing, flushing and updating the cache.&lt;p&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;26</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;27</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@author</span> &lt;a href="mailto:sergek@lokitech.com"&gt;Serge Knystautas&lt;/a&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;28</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@author</span> &lt;a href="mailto:mike@atlassian.com"&gt;Mike Cannon-Brookes&lt;/a&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;29</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@author</span> &lt;a href="mailto:ltorunski@t-online.de"&gt;Lars Torunski&lt;/a&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;30</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@version</span> $Revision: 1.11 $</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;31</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="CacheFilter">&nbsp;32</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">public</span> <span class="keyword">class</span> CacheFilter <span class="keyword">implements</span> Filter, ICacheKeyProvider, ICacheGroupsProvider {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;33</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// Header</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;34</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_LAST_MODIFIED = <span class="string">"Last-Modified"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;35</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_CONTENT_TYPE = <span class="string">"Content-Type"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;36</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_CONTENT_ENCODING = <span class="string">"Content-Encoding"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;37</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_EXPIRES = <span class="string">"Expires"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;38</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_IF_MODIFIED_SINCE = <span class="string">"If-Modified-Since"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;39</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_CACHE_CONTROL = <span class="string">"Cache-control"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;40</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final String HEADER_ACCEPT_ENCODING = <span class="string">"Accept-Encoding"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;41</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;42</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// Fragment parameter</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;43</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">int</span> FRAGMENT_AUTODETECT = -1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;44</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">int</span> FRAGMENT_NO = 0;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;45</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">int</span> FRAGMENT_YES = 1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;46</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;47</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// No cache parameter</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;48</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">int</span> NOCACHE_OFF = 0;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;49</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">int</span> NOCACHE_SESSION_ID_IN_URL = 1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;50</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;51</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// Last Modified parameter</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;52</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">long</span> LAST_MODIFIED_OFF = 0;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;53</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">long</span> LAST_MODIFIED_ON = 1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;54</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">long</span> LAST_MODIFIED_INITIAL = -1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;55</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;56</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// Expires parameter</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;57</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">long</span> EXPIRES_OFF = 0;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;58</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">long</span> EXPIRES_ON = 1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;59</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">long</span> EXPIRES_TIME = -1;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;60</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;61</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// request attribute to avoid reentrance</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;62</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final <span class="keyword">static</span> String REQUEST_FILTERED = <span class="string">"__oscache_filtered"</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;63</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;64</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// the policy for the expires header</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;65</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> EntryRefreshPolicy expiresRefreshPolicy;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;66</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;67</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// the logger</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;68</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final Log log = LogFactory.getLog(<span class="keyword">this</span>.getClass());</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;69</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;70</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">// filter variables</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;71</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> FilterConfig config;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;72</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> ServletCacheAdministrator admin = <span class="keyword">null</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;73</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">int</span> cacheScope = PageContext.APPLICATION_SCOPE; <span class="comment">// filter scope - default is APPLICATION</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;74</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">int</span> fragment = FRAGMENT_AUTODETECT; <span class="comment">// defines if this filter handles fragments of a page - default is auto detect</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;75</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">int</span> time = 60 * 60; <span class="comment">// time before cache should be refreshed - default one hour (in seconds)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;76</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> String cron = <span class="keyword">null</span>; <span class="comment">// A cron expression that determines when this cached content will expire - default is null</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;77</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">int</span> nocache = NOCACHE_OFF; <span class="comment">// defines special no cache option for the requests - default is off</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;78</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">long</span> lastModified = LAST_MODIFIED_INITIAL; <span class="comment">// defines if the last-modified-header will be sent - default is intial setting</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;79</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">long</span> expires = EXPIRES_ON; <span class="comment">// defines if the expires-header will be sent - default is on</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;80</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> ICacheKeyProvider cacheKeyProvider = <span class="keyword">this</span>; <span class="comment">// the provider of the cache key - default is the CacheFilter itselfs</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;81</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> ICacheGroupsProvider cacheGroupsProvider = <span class="keyword">this</span>; <span class="comment">// the provider of the cache groups - default is the CacheFilter itselfs</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;82</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;83</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;84</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Filter clean-up</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;85</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;86</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 86: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 86: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> destroy() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;87</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">//Not much to do...</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;88</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;89</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;90</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;91</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * The doFilter call caches the response by wrapping the &lt;code&gt;HttpServletResponse&lt;/code&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;92</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * object so that the output stream can be caught. This works by splitting off the output</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;93</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * stream into two with the {@link SplitServletOutputStream} class. One stream gets written</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;94</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * out to the response as normal, the other is fed into a byte array inside a {@link ResponseContent}</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;95</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * object.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;96</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;97</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> request The servlet request</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;98</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> response The servlet response</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;99</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> chain The filter chain</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;100</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@throws</span> ServletException IOException</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;101</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;102</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 102: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 102: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> doFilter(ServletRequest request, ServletResponse response, FilterChain chain) <span class="keyword">throws</span> ServletException, IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;103</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 103: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 103: statement not executed.">        <span class="keyword">if</span> (log.isInfoEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;104</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 104: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 104: statement not executed.">            log.info(<span class="string">"&lt;cache&gt;: filter in scope "</span> + cacheScope);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;105</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;106</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;107</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// avoid reentrance (CACHE-128) and check if request is cacheable</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;108</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 108: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 108: statement not executed.">        <span class="keyword">if</span> (isFilteredBefore(request) || !isCacheable(request)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;109</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 109: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 109: statement not executed.">            chain.doFilter(request, response);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;110</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 110: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 110: statement not executed.">            <span class="keyword">return</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;111</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;112</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 112: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 112: statement not executed.">        request.setAttribute(REQUEST_FILTERED, Boolean.TRUE);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;113</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;114</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 114: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 114: statement not executed.">        HttpServletRequest httpRequest = (HttpServletRequest) request;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;115</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;116</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// checks if the response will be a fragment of a page</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;117</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 117: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 117: statement not executed.">        <span class="keyword">boolean</span> fragmentRequest = isFragment(httpRequest);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;118</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;119</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// avoid useless session creation for application scope pages (CACHE-129)</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;120</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 120: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 120: statement not executed.">        Cache cache;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;121</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 121: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 121: statement not executed.">        <span class="keyword">if</span> (cacheScope == PageContext.SESSION_SCOPE) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;122</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 122: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 122: statement not executed.">            cache = admin.getSessionScopeCache(httpRequest.getSession(<span class="keyword">true</span>));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;123</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;124</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 124: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 124: statement not executed.">            cache = admin.getAppScopeCache(config.getServletContext());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;125</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;126</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;127</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// generate the cache entry key</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;128</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 128: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 128: statement not executed.">        String key = cacheKeyProvider.createCacheKey(httpRequest, admin, cache);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;129</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;130</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 130: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 130: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;131</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 131: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 131: statement not executed.">            ResponseContent respContent = (ResponseContent) cache.getFromCache(key, time, cron);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;132</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;133</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 133: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 133: statement not executed.">            <span class="keyword">if</span> (log.isInfoEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;134</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 134: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 134: statement not executed.">                log.info(<span class="string">"&lt;cache&gt;: Using cached entry for "</span> + key);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;135</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;136</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;137</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 137: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 137: statement not executed.">            <span class="keyword">boolean</span> acceptsGZip = <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;138</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 138: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 138: statement not executed.">            <span class="keyword">if</span> ((!fragmentRequest) &amp;&amp; (lastModified != LAST_MODIFIED_OFF)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;139</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 139: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 139: statement not executed.">                <span class="keyword">long</span> clientLastModified = httpRequest.getDateHeader(HEADER_IF_MODIFIED_SINCE); <span class="comment">// will return -1 if no header...</span></A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;140</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;141</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                <span class="comment">// only reply with SC_NOT_MODIFIED</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;142</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                <span class="comment">// if the client has already the newest page and the response isn't a fragment in a page </span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;143</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 143: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 143: statement not executed.">                <span class="keyword">if</span> ((clientLastModified != -1) &amp;&amp; (clientLastModified &gt;= respContent.getLastModified())) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;144</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 144: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 144: statement not executed.">                    ((HttpServletResponse) response).setStatus(HttpServletResponse.SC_NOT_MODIFIED);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;145</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 145: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 145: statement not executed.">                    <span class="keyword">return</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;146</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;147</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;148</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 148: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 148: statement not executed.">                acceptsGZip = respContent.isContentGZiped() &amp;&amp; acceptsGZipEncoding(httpRequest); </A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;149</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;150</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;151</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 151: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 151: statement not executed.">            respContent.writeTo(response, fragmentRequest, acceptsGZip);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;152</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">// acceptsGZip is used for performance reasons above; use the following line for CACHE-49</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;153</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">// respContent.writeTo(response, fragmentRequest, acceptsGZipEncoding(httpRequest));</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;154</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (NeedsRefreshException nre) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;155</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 155: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 155: statement not executed.">            <span class="keyword">boolean</span> updateSucceeded = <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;156</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;157</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 157: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 157: statement not executed.">            <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;158</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 158: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 158: statement not executed.">                <span class="keyword">if</span> (log.isInfoEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;159</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 159: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 159: statement not executed.">                    log.info(<span class="string">"&lt;cache&gt;: New cache entry, cache stale or cache scope flushed for "</span> + key);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;160</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;161</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;162</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 162: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 162: statement not executed.">                CacheHttpServletResponseWrapper cacheResponse = <span class="keyword">new</span> CacheHttpServletResponseWrapper((HttpServletResponse) response, fragmentRequest, time * 1000L, lastModified, expires);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;163</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 163: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 163: statement not executed.">                chain.doFilter(request, cacheResponse);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;164</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 164: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 164: statement not executed.">                cacheResponse.flushBuffer();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;165</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;166</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                <span class="comment">// Only cache if the response is cacheable</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;167</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 167: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 167: statement not executed.">                <span class="keyword">if</span> (isCacheable(cacheResponse)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;168</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                    <span class="comment">// get the cache groups of the content</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;169</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 169: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 169: statement not executed.">                    String[] groups = cacheGroupsProvider.createCacheGroups(httpRequest, admin, cache);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;170</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                    <span class="comment">// Store as the cache content the result of the response</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;171</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 171: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 171: statement not executed.">                    cache.putInCache(key, cacheResponse.getContent(), groups, expiresRefreshPolicy, <span class="keyword">null</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;172</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 172: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 172: statement not executed.">                    updateSucceeded = <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;173</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;174</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="keyword">finally</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;175</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 175: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 175: statement not executed.">                <span class="keyword">if</span> (!updateSucceeded) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;176</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 176: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 176: statement not executed.">                    cache.cancelUpdate(key);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;177</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;178</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;179</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;180</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;181</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;182</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;183</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Initialize the filter. This retrieves a {@link ServletCacheAdministrator}</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;184</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * instance and configures the filter based on any initialization parameters.&lt;p&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;185</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * The supported initialization parameters are:</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;186</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;ul&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;187</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;188</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;time&lt;/b&gt; - the default time (in seconds) to cache content for. The default</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;189</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * value is 3600 seconds (one hour).&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;190</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;191</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;scope&lt;/b&gt; - the default scope to cache content in. Acceptable values</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;192</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * are &lt;code&gt;application&lt;/code&gt; (default), &lt;code&gt;session&lt;/code&gt;, &lt;code&gt;request&lt;/code&gt; and</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;193</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;page&lt;/code&gt;.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;194</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;195</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;fragment&lt;/b&gt; - defines if this filter handles fragments of a page. Acceptable values</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;196</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * are &lt;code&gt;auto&lt;/code&gt; (default) for auto detect, &lt;code&gt;no&lt;/code&gt; and &lt;code&gt;yes&lt;/code&gt;.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;197</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;198</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;nocache&lt;/b&gt; - defines which objects shouldn't be cached. Acceptable values</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;199</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * are &lt;code&gt;off&lt;/code&gt; (default) and &lt;code&gt;sessionIdInURL&lt;/code&gt; if the session id is</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;200</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * contained in the URL.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;201</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;202</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;lastModified&lt;/b&gt; - defines if the last modified header will be sent in the response. Acceptable values are</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;203</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;off&lt;/code&gt; for don't sending the header, even it is set in the filter chain, </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;204</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;on&lt;/code&gt; for sending it if it is set in the filter chain and </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;205</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;inital&lt;/code&gt; (default) the last modified information will be set based on the current time and changes are allowed.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;206</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;207</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;expires&lt;/b&gt; - defines if the expires header will be sent in the response. Acceptable values are</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;208</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;off&lt;/code&gt; for don't sending the header, even it is set in the filter chain, </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;209</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;on&lt;/code&gt; (default) for sending it if it is set in the filter chain and </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;210</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;code&gt;time&lt;/code&gt; the expires information will be intialized based on the time parameter and creation time of the content.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;211</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;212</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;ICacheKeyProvider&lt;/b&gt; - Class implementing the interface &lt;code&gt;ICacheKeyProvider&lt;/code&gt;.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;213</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * A developer can implement a method which provides cache keys based on the request, </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;214</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * the servlect cache administrator and cache.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;215</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;216</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;ICacheGroupsProvider&lt;/b&gt; - Class implementing the interface &lt;code&gt;ICacheGroupsProvider&lt;/code&gt;.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;217</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * A developer can implement a method which provides cache groups based on the request, </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;218</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * the servlect cache administrator and cache.&lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;219</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;220</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;li&gt;&lt;b&gt;EntryRefreshPolicy&lt;/b&gt; - Class implementing the interface &lt;code&gt;EntryRefreshPolicy&lt;/code&gt;.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;221</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * A developer can implement a class which provides a different custom cache invalidation policy for a specific cache entry.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;222</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * If not specified, the default policy is timed entry expiry as specified with the &lt;b&gt;time&lt;/b&gt; parameter described above. </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;223</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * &lt;/li&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;224</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;225</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> filterConfig The filter configuration</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;226</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;227</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 227: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 227: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> init(FilterConfig filterConfig) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;228</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">//Get whatever settings we want...</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;229</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 229: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 229: statement not executed.">        config = filterConfig;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;230</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 230: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 230: statement not executed.">        admin = ServletCacheAdministrator.getInstance(config.getServletContext());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;231</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;232</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter time</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;233</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 233: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 233: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;234</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 234: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 234: statement not executed.">            time = Integer.parseInt(config.getInitParameter(<span class="string">"time"</span>));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;235</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (Exception e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;236</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 236: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 236: statement not executed.">            log.info(<span class="string">"Could not get init parameter 'time', defaulting to one hour."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;237</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;238</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;239</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// setting the refresh period for this cache filter</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;240</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 240: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 240: statement not executed.">        expiresRefreshPolicy = <span class="keyword">new</span> ExpiresRefreshPolicy(time);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;241</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;242</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter scope</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;243</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 243: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 243: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;244</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 244: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 244: statement not executed.">            String scopeString = config.getInitParameter(<span class="string">"scope"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;245</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;246</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 246: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 246: statement not executed.">            <span class="keyword">if</span> (scopeString.equals(<span class="string">"session"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;247</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 247: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 247: statement not executed.">                cacheScope = PageContext.SESSION_SCOPE;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;248</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 248: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 248: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (scopeString.equals(<span class="string">"application"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;249</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 249: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 249: statement not executed.">                cacheScope = PageContext.APPLICATION_SCOPE;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;250</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 250: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 250: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (scopeString.equals(<span class="string">"request"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;251</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 251: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 251: statement not executed.">                cacheScope = PageContext.REQUEST_SCOPE;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;252</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 252: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 252: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (scopeString.equals(<span class="string">"page"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;253</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 253: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 253: statement not executed.">                cacheScope = PageContext.PAGE_SCOPE;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;254</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;255</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (Exception e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;256</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 256: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 256: statement not executed.">            log.info(<span class="string">"Could not get init parameter 'scope', defaulting to 'application'."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;257</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;258</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;259</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter cron</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;260</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 260: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 260: statement not executed.">        cron = config.getInitParameter(<span class="string">"cron"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;261</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;262</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter fragment</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;263</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 263: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 263: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;264</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 264: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 264: statement not executed.">            String fragmentString = config.getInitParameter(<span class="string">"fragment"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;265</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;266</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 266: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 266: statement not executed.">            <span class="keyword">if</span> (fragmentString.equals(<span class="string">"no"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;267</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 267: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 267: statement not executed.">                fragment = FRAGMENT_NO;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;268</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 268: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 268: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (fragmentString.equals(<span class="string">"yes"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;269</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 269: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 269: statement not executed.">                fragment = FRAGMENT_YES;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;270</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 270: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 270: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (fragmentString.equalsIgnoreCase(<span class="string">"auto"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;271</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 271: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 271: statement not executed.">                fragment = FRAGMENT_AUTODETECT;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;272</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;273</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (Exception e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;274</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 274: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 274: statement not executed.">            log.info(<span class="string">"Could not get init parameter 'fragment', defaulting to 'auto detect'."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;275</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;276</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;277</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter nocache</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;278</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 278: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 278: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;279</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 279: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 279: statement not executed.">            String nocacheString = config.getInitParameter(<span class="string">"nocache"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;280</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;281</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 281: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 281: statement not executed.">            <span class="keyword">if</span> (nocacheString.equals(<span class="string">"off"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;282</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 282: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 282: statement not executed.">                nocache = NOCACHE_OFF;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;283</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 283: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 283: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (nocacheString.equalsIgnoreCase(<span class="string">"sessionIdInURL"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;284</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 284: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 284: statement not executed.">                nocache = NOCACHE_SESSION_ID_IN_URL;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;285</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;286</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (Exception e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;287</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 287: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 287: statement not executed.">            log.info(<span class="string">"Could not get init parameter 'nocache', defaulting to 'off'."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;288</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;289</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;290</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter last modified</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;291</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 291: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 291: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;292</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 292: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 292: statement not executed.">            String lastModifiedString = config.getInitParameter(<span class="string">"lastModified"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;293</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;294</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 294: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 294: statement not executed.">            <span class="keyword">if</span> (lastModifiedString.equals(<span class="string">"off"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;295</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 295: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 295: statement not executed.">                lastModified = LAST_MODIFIED_OFF;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;296</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 296: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 296: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (lastModifiedString.equals(<span class="string">"on"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;297</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 297: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 297: statement not executed.">                lastModified = LAST_MODIFIED_ON;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;298</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 298: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 298: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (lastModifiedString.equalsIgnoreCase(<span class="string">"initial"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;299</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 299: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 299: statement not executed.">                lastModified = LAST_MODIFIED_INITIAL;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;300</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;301</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (Exception e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;302</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 302: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 302: statement not executed.">            log.info(<span class="string">"Could not get init parameter 'lastModified', defaulting to 'initial'."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;303</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;304</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;305</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter expires</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;306</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 306: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 306: statement not executed.">        <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;307</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 307: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 307: statement not executed.">            String expiresString = config.getInitParameter(<span class="string">"expires"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;308</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;309</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 309: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 309: statement not executed.">            <span class="keyword">if</span> (expiresString.equals(<span class="string">"off"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;310</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 310: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 310: statement not executed.">                expires = EXPIRES_OFF;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;311</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 311: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 311: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (expiresString.equals(<span class="string">"on"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;312</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 312: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 312: statement not executed.">                expires = EXPIRES_ON;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;313</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 313: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 313: statement not executed.">            } <span class="keyword">else</span> <span class="keyword">if</span> (expiresString.equalsIgnoreCase(<span class="string">"time"</span>)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;314</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 314: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 314: statement not executed.">                expires = EXPIRES_TIME;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;315</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;316</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">catch</span> (Exception e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;317</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 317: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 317: statement not executed.">            log.info(<span class="string">"Could not get init parameter 'expires', defaulting to 'on'."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;318</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;319</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;320</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter ICacheKeyProvider</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;321</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 321: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 321: statement not executed.">        ICacheKeyProvider cacheKeyProvider = (ICacheKeyProvider)instantiateFromInitParam(<span class="string">"ICacheKeyProvider"</span>, ICacheKeyProvider.<span class="keyword">class</span>, <span class="keyword">this</span>.getClass().getName());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;322</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 322: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 322: statement not executed.">        <span class="keyword">if</span> (cacheKeyProvider != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;323</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 323: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 323: statement not executed.">            <span class="keyword">this</span>.cacheKeyProvider = cacheKeyProvider;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;324</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;325</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;326</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter ICacheGroupsProvider</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;327</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 327: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 327: statement not executed.">        ICacheGroupsProvider cacheGroupsProvider = (ICacheGroupsProvider)instantiateFromInitParam(<span class="string">"ICacheGroupsProvider"</span>, ICacheGroupsProvider.<span class="keyword">class</span>, <span class="keyword">this</span>.getClass().getName());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;328</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 328: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 328: statement not executed.">        <span class="keyword">if</span> (cacheGroupsProvider != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;329</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 329: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 329: statement not executed.">            <span class="keyword">this</span>.cacheGroupsProvider = cacheGroupsProvider;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;330</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;331</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;332</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// filter parameter EntryRefreshPolicy</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;333</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 333: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 333: statement not executed.">        EntryRefreshPolicy expiresRefreshPolicy = (EntryRefreshPolicy)instantiateFromInitParam(<span class="string">"EntryRefreshPolicy"</span>, EntryRefreshPolicy.<span class="keyword">class</span>, <span class="keyword">this</span>.expiresRefreshPolicy.getClass().getName());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;334</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 334: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 334: statement not executed.">        <span class="keyword">if</span> (expiresRefreshPolicy != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;335</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 335: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 335: statement not executed.">            <span class="keyword">this</span>.expiresRefreshPolicy = expiresRefreshPolicy;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;336</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;337</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;338</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;339</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 339: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 339: method not entered.">    <span class="keyword">private</span> Object instantiateFromInitParam(String classInitParam, Class interfaceClass, String defaultClassName) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;340</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 340: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 340: statement not executed.">        String className = config.getInitParameter(classInitParam);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;341</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 341: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 341: statement not executed.">        <span class="keyword">if</span> (className == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;342</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 342: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 342: statement not executed.">            log.info(<span class="string">"Could not get init parameter '"</span> + classInitParam + <span class="string">"', defaulting to "</span> + defaultClassName + <span class="string">"."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;343</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 343: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 343: statement not executed.">            <span class="keyword">return</span> <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;344</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;345</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 345: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 345: statement not executed.">            <span class="keyword">try</span> {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;346</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 346: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 346: statement not executed.">                Class clazz = Class.forName(className);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;347</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 347: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 347: statement not executed.">                <span class="keyword">if</span> (!interfaceClass.isAssignableFrom(clazz)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;348</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 348: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 348: statement not executed.">                    log.error(<span class="string">"Specified class '"</span> + className + <span class="string">"' does not implement"</span> + interfaceClass.getName() + <span class="string">". Using default "</span> + defaultClassName + <span class="string">"."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;349</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 349: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 349: statement not executed.">                    <span class="keyword">return</span> <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;350</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                } <span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;351</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 351: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 351: statement not executed.">                    <span class="keyword">return</span> clazz.newInstance();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;352</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">                }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;353</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="keyword">catch</span> (ClassNotFoundException e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;354</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 354: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 354: statement not executed.">                log.error(<span class="string">"Class '"</span> + className + <span class="string">"' not found. Defaulting to "</span> + defaultClassName + <span class="string">"."</span>, e);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;355</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="keyword">catch</span> (InstantiationException e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;356</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 356: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 356: statement not executed.">                log.error(<span class="string">"Class '"</span> + className + <span class="string">"' could not be instantiated because it is not a concrete class. Using default class "</span> + defaultClassName + <span class="string">"."</span>, e);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;357</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="keyword">catch</span> (IllegalAccessException e) {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;358</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 358: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 358: statement not executed.">                log.error(<span class="string">"Class '"</span>+ className+ <span class="string">"' could not be instantiated because it is not public. Using default class "</span> + defaultClassName + <span class="string">"."</span>, e);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;359</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;360</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 360: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 360: statement not executed.">            <span class="keyword">return</span> <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;361</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;362</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;363</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;364</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;365</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> com.opensymphony.oscache.web.filter.ICacheKeyProvider#createCacheKey(javax.servlet.http.HttpServletRequest, ServletCacheAdministrator, Cache)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;366</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;367</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 367: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 367: method not entered.">    <span class="keyword">public</span> String createCacheKey(HttpServletRequest httpRequest, ServletCacheAdministrator scAdmin, Cache cache) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;368</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 368: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 368: statement not executed.">        <span class="keyword">return</span> scAdmin.generateEntryKey(<span class="keyword">null</span>, httpRequest, cacheScope);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;369</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;370</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;371</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;372</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> com.opensymphony.oscache.web.filter.ICacheGroupsProvider#createCacheGroups(javax.servlet.http.HttpServletRequest, ServletCacheAdministrator, Cache)</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;373</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;374</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 374: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 374: method not entered.">    <span class="keyword">public</span> String[] createCacheGroups(HttpServletRequest httpRequest, ServletCacheAdministrator scAdmin, Cache cache) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;375</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 375: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 375: statement not executed.">        <span class="keyword">return</span> <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;376</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;377</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;378</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;379</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Checks if the request is a fragment in a page.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;380</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;381</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * According to Java Servlet API 2.2 (8.2.1 Dispatching Requests, Included</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;382</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Request Parameters), when a servlet is being used from within an include,</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;383</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * the attribute &lt;code&gt;javax.servlet.include.request_uri&lt;/code&gt; is set.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;384</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * According to Java Servlet API 2.3 this is excepted for servlets obtained</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;385</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * by using the getNamedDispatcher method.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;386</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;387</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> request the to be handled request</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;388</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span> true if the request is a fragment in a page</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;389</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;390</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 390: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 390: method not entered.">    <span class="keyword">protected</span> <span class="keyword">boolean</span> isFragment(HttpServletRequest request) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;391</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 391: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 391: statement not executed.">        <span class="keyword">if</span> (fragment == FRAGMENT_AUTODETECT) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;392</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 392: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 392: statement not executed.">            <span class="keyword">return</span> request.getAttribute(<span class="string">"javax.servlet.include.request_uri"</span>) != <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;393</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;394</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 394: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 394: statement not executed.">            <span class="keyword">return</span> (fragment == FRAGMENT_NO) ? <span class="keyword">false</span> : <span class="keyword">true</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;395</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;396</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;397</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;398</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;399</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Checks if the request was filtered before, so</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;400</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * guarantees to be executed once per request. You</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;401</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * can override this methods to define a more specific</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;402</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * behaviour.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;403</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;404</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> request checks if the request was filtered before.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;405</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span> true if it is the first execution</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;406</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;407</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 407: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 407: method not entered.">    <span class="keyword">protected</span> <span class="keyword">boolean</span> isFilteredBefore(ServletRequest request) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;408</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 408: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 408: statement not executed.">        <span class="keyword">return</span> request.getAttribute(REQUEST_FILTERED) != <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;409</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;410</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;411</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;412</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * isCacheable is a method allowing a subclass to decide if a request is</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;413</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * cachable or not.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;414</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;415</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> request The servlet request</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;416</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span> Returns a boolean indicating if the request can be cached or not.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;417</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;418</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 418: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 418: method not entered.">    <span class="keyword">protected</span> <span class="keyword">boolean</span> isCacheable(ServletRequest request) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;419</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// TODO implement CACHE-137 and CACHE-141 here</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;420</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 420: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 420: statement not executed.">        <span class="keyword">boolean</span> cachable = request <span class="keyword">instanceof</span> HttpServletRequest;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;421</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;422</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 422: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 422: statement not executed.">        <span class="keyword">if</span> (cachable) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;423</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 423: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 423: statement not executed.">            HttpServletRequest requestHttp = (HttpServletRequest) request;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;424</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 424: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 424: statement not executed.">            <span class="keyword">if</span> (nocache == NOCACHE_SESSION_ID_IN_URL) { <span class="comment">// don't cache requests if session id is in the URL</span></A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;425</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 425: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 425: statement not executed.">                cachable = !requestHttp.isRequestedSessionIdFromURL();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;426</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;427</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;428</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;429</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 429: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 429: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;430</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 430: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 430: statement not executed.">            log.debug(<span class="string">"&lt;cache&gt;: the request "</span> + ((cachable) ? <span class="string">"is"</span> : <span class="string">"is not"</span>) + <span class="string">" cachable."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;431</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;432</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;433</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 433: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 433: statement not executed.">        <span class="keyword">return</span> cachable;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;434</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;435</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;436</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;437</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * isCacheable is a method allowing subclass to decide if a response is</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;438</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * cachable or not.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;439</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;440</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> cacheResponse The HTTP servlet response</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;441</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span> Returns a boolean indicating if the response can be cached or not.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;442</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;443</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 443: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 443: method not entered.">    <span class="keyword">protected</span> <span class="keyword">boolean</span> isCacheable(CacheHttpServletResponseWrapper cacheResponse) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;444</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// TODO implement CACHE-137 and CACHE-141 here</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;445</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// Only cache if the response was 200</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;446</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 446: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 446: statement not executed.">        <span class="keyword">boolean</span> cachable = cacheResponse.getStatus() == HttpServletResponse.SC_OK;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;447</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;448</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 448: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 448: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;449</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 449: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 449: statement not executed.">            log.debug(<span class="string">"&lt;cache&gt;: the response "</span> + ((cachable) ? <span class="string">"is"</span> : <span class="string">"is not"</span>) + <span class="string">" cachable."</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;450</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;451</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;452</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 452: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 452: statement not executed.">        <span class="keyword">return</span> cachable;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;453</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;454</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;455</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;456</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Check if the client browser support gzip compression.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;457</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * </span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;458</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> request the http request</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;459</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span> true if client browser supports GZIP</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;460</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;461</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 461: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 461: method not entered.">    <span class="keyword">protected</span> <span class="keyword">boolean</span> acceptsGZipEncoding(HttpServletRequest request) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;462</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 462: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 462: statement not executed.">        String acceptEncoding = request.getHeader(HEADER_ACCEPT_ENCODING);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;463</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 463: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 463: statement not executed.">        <span class="keyword">return</span>  (acceptEncoding != <span class="keyword">null</span>) &amp;&amp; (acceptEncoding.indexOf(<span class="string">"gzip"</span>) != -1);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;464</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;465</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;466</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">}</SPAN></TD></TR></TBODY></TABLE>
+<TABLE width="100%"><TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+<TR><TD class="footer" colspan="6">
+<table>
+<tr>
+ <td><a target="_new" href="http://www.cenqua.com/clover?2T"><img alt="Clover" src="../../../../../img/logo.gif" border="0"></a></td><td nowrap><i>Report generated by </i><a target="_new" href="http://www.cenqua.com/clover?2T">Clover Code Coverage v1.3.9</a><i><BR>Mo Mrz 6 2006 19:30:50 CET</i>.</td>
+<td>&nbsp;</td><td style="BORDER-LEFT: #9c9c9c 1px solid;">&nbsp;</td><td>Open Source License registered to the OpenSymphony Project. This license of Clover is provided to support the development of OpenSymphony only. </td>
+</tr>
+</table>
+</td>
+</tr></TABLE>

@@ -1,0 +1,1708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../style.css" TITLE="Style">
+</head>
+<body>
+<TABLE cellspacing="0" cellpadding="2"><TBODY>
+    <!-- C:\ Programme\ eclipse\ workspace\ oscache\ src\ java\ com\ opensymphony\ oscache\ web\ filter\ CacheHttpServletResponseWrapper.java -->
+  <TR>
+    <TD colspan="6" class="reportHeader">
+    <TABLE width="100%"><TR>
+    <TD valign="top" class="titleText">Clover coverage report -    <DIV class="timestamp"><b>Coverage timestamp:</b>&nbsp;Mo Mrz 6 2006 19:30:45 CET</DIV>
+            <DIV class="navBar"><a href="../../../../../pkgs-summary.html"><b>Overview</b></a>&nbsp;&nbsp;&nbsp;<a href="pkg-summary.html"><b>Package</b></a>&nbsp;&nbsp;&nbsp;<font class="navBarCurrent">File</font></DIV>
+    
+<DIV class="navBarLink">
+&nbsp;&nbsp;&nbsp;
+    <A HREF="../../../../../index.html" TARGET="_top">FRAMES</A>&nbsp;&nbsp;
+<A HREF="CacheHttpServletResponseWrapper.html" TARGET="_top">NO FRAMES</A>&nbsp;&nbsp;
+    </DIV>
+
+</TD>
+         <td class="headerStats" valign="top" width="40%" align="right">
+        <table align="right">
+         <tr>
+           <td nowrap><b>file stats:</b></td>
+           <td align="right"><b>LOC:</b></td>
+           <td align="right">375</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Methods:</b></td>
+           <td align="right">22</td>
+         </tr>
+         <tr>
+           <td></td>
+           <td align="right"><b>NCLOC:</b></td>
+           <td align="right">195</td>
+           <td width="10%">&nbsp;</td>
+           <td align="right"><b>Classes:</b></td>
+           <td align="right">1</td>
+         </tr>
+      </table>
+     </td>
+    </TR></TABLE>
+   </TD>
+  </TR>
+
+<TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+  <TR>
+    <TD class="graphHeaderLeft"><b>&nbsp;Source file</b></TD>
+    <TD class="graphHeader">Conditionals</TD>
+    <TD class="graphHeader">Statements</TD>
+    <TD class="graphHeader">Methods</TD>
+    <TD class="graphHeader" align="left" colspan="2"><B>TOTAL</B></TD>
+  </TR>   
+  <TR>
+    <TD class="graphItem">
+        	   CacheHttpServletResponseWrapper.java
+	    </TD>
+   
+    <TD class="graphPercent" align="center">0%</TD>
+    <TD class="graphPercent" align="center">0%</TD>
+    <TD class="graphPercent" align="center">0%</TD>
+    <TD class="graphBarLeft" align="center"><B>0%</B></TD>
+    <TD class="graphBar">
+            <TABLE class="barGraph" cellspacing="0">
+        <TBODY>
+          <TR>
+	   	    <TD class="uncovered"><img alt="coverage" src="../../../../../img/trans.gif" width="200" height="12"></TD> 
+	   	  </TR>
+	</TBODY>
+      </TABLE>
+          </TD>
+  </TR> 
+</TBODY></TABLE><TABLE cellspacing="0" cellpadding="0" class="srcView"><TBODY>
+<TR><TD align="right" class="lineCount">
+&nbsp;1</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/*</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;2</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * Copyright (c) 2002-2003 by OpenSymphony</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;3</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * All rights reserved.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;4</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;5</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">package</span> com.opensymphony.oscache.web.filter;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;6</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;7</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.apache.commons.logging.Log;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;8</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> org.apache.commons.logging.LogFactory;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;9</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;10</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.IOException;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;11</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.OutputStreamWriter;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;12</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.io.PrintWriter;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;13</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;14</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> java.util.Locale;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;15</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;16</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.ServletOutputStream;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;17</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;18</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">import</span> javax.servlet.http.HttpServletResponseWrapper;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;19</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;20</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;21</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * CacheServletResponse is a serialized representation of a response</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;22</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;23</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@author</span>  &lt;a href="mailto:sergek@lokitech.com"&gt;Serge Knystautas&lt;/a&gt;</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;24</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> * <span class="javadoc">@version</span> $Revision: 1.6 $</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;25</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment"> */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+<A name="CacheHttpServletResponseWrapper">&nbsp;26</A></TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="keyword">public</span> <span class="keyword">class</span> CacheHttpServletResponseWrapper <span class="keyword">extends</span> HttpServletResponseWrapper {</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;27</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> final Log log = LogFactory.getLog(<span class="keyword">this</span>.getClass());</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;28</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;29</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;30</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * We cache the printWriter so we can maintain a single instance</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;31</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * of it no matter how many times it is requested.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;32</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;33</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> PrintWriter cachedWriter = <span class="keyword">null</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;34</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> ResponseContent result = <span class="keyword">null</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;35</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> SplitServletOutputStream cacheOut = <span class="keyword">null</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;36</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">boolean</span> fragment = <span class="keyword">false</span>;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;37</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">int</span> status = SC_OK;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;38</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">long</span> expires = CacheFilter.EXPIRES_ON;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;39</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="keyword">private</span> <span class="keyword">long</span> lastModified = CacheFilter.LAST_MODIFIED_INITIAL;</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;40</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;41</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;42</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Constructor</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;43</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;44</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> response The servlet response</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;45</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;46</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 46: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 46: method not entered.">    <span class="keyword">public</span> CacheHttpServletResponseWrapper(HttpServletResponse response) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;47</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 47: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 47: statement not executed.">        <span class="keyword">this</span>(response, <span class="keyword">false</span>, Long.MAX_VALUE, CacheFilter.EXPIRES_ON, CacheFilter.LAST_MODIFIED_INITIAL);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;48</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;49</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;50</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;51</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Constructor</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;52</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;53</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> response The servlet response</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;54</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> fragment true if the repsonse indicates that it is a fragement of a page</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;55</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> time the refresh time in millis</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;56</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> lastModified defines if last modified header will be send, <span class="javadoc">@see</span> CacheFilter</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;57</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> expires defines if expires header will be send, <span class="javadoc">@see</span> CacheFilter</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;58</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;59</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 59: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 59: method not entered.">    <span class="keyword">public</span> CacheHttpServletResponseWrapper(HttpServletResponse response, <span class="keyword">boolean</span> fragment, <span class="keyword">long</span> time, <span class="keyword">long</span> lastModified, <span class="keyword">long</span> expires) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;60</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 60: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 60: statement not executed.">        <span class="keyword">super</span>(response);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;61</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 61: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 61: statement not executed.">        result = <span class="keyword">new</span> ResponseContent();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;62</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 62: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 62: statement not executed.">        <span class="keyword">this</span>.fragment = fragment;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;63</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 63: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 63: statement not executed.">        <span class="keyword">this</span>.expires = expires;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;64</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 64: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 64: statement not executed.">        <span class="keyword">this</span>.lastModified = lastModified;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;65</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;66</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// only set inital values for last modified and expires, when a complete page is cached</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;67</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 67: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 67: statement not executed.">        <span class="keyword">if</span> (!fragment) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;68</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">// setting a default last modified value based on object creation and remove the millis</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;69</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 69: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 69: statement not executed.">            <span class="keyword">if</span> (lastModified == CacheFilter.LAST_MODIFIED_INITIAL) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;70</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 70: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 70: statement not executed.">                <span class="keyword">long</span> current = System.currentTimeMillis() / 1000;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;71</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 71: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 71: statement not executed.">                result.setLastModified(current * 1000);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;72</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 72: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 72: statement not executed.">                <span class="keyword">super</span>.setDateHeader(CacheFilter.HEADER_LAST_MODIFIED, result.getLastModified());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;73</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;74</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">// setting the expires value</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;75</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 75: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 75: statement not executed.">            <span class="keyword">if</span> (expires == CacheFilter.EXPIRES_TIME) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;76</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 76: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 76: statement not executed.">                result.setExpires(result.getLastModified() + time);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;77</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 77: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 77: statement not executed.">                <span class="keyword">super</span>.setDateHeader(CacheFilter.HEADER_EXPIRES, result.getExpires());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;78</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;79</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;80</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;81</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;82</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;83</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Get a response content</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;84</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;85</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@return</span> The content</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;86</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;87</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 87: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 87: method not entered.">    <span class="keyword">public</span> ResponseContent getContent() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;88</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">//Create the byte array</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;89</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 89: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 89: statement not executed.">        result.commit();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;90</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;91</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">//Return the result from this response</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;92</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 92: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 92: statement not executed.">        <span class="keyword">return</span> result;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;93</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;94</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;95</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;96</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Set the content type</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;97</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;98</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The content type</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;99</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;100</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 100: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 100: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setContentType(String value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;101</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 101: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 101: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;102</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 102: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 102: statement not executed.">            log.debug(<span class="string">"ContentType: "</span> + value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;103</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;104</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;105</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 105: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 105: statement not executed.">        <span class="keyword">super</span>.setContentType(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;106</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 106: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 106: statement not executed.">        result.setContentType(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;107</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;108</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;109</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;110</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Set the date of a header</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;111</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;112</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> name The header name</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;113</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The date</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;114</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;115</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 115: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 115: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setDateHeader(String name, <span class="keyword">long</span> value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;116</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 116: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 116: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;117</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 117: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 117: statement not executed.">            log.debug(<span class="string">"dateheader: "</span> + name + <span class="string">": "</span> + value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;118</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;119</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;120</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// only set the last modified value, if a complete page is cached</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;121</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 121: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 121: statement not executed.">        <span class="keyword">if</span> ((lastModified != CacheFilter.LAST_MODIFIED_OFF) &amp;&amp; (CacheFilter.HEADER_LAST_MODIFIED.equalsIgnoreCase(name))) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;122</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 122: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 122: statement not executed.">            <span class="keyword">if</span> (!fragment) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;123</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 123: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 123: statement not executed.">                result.setLastModified(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;124</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="comment">// TODO should we return now by fragments to avoid putting the header to the response?</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;125</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;126</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;127</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// implement RFC 2616 14.21 Expires (without max-age)</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;128</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 128: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 128: statement not executed.">        <span class="keyword">if</span> ((expires != CacheFilter.EXPIRES_OFF) &amp;&amp; (CacheFilter.HEADER_EXPIRES.equalsIgnoreCase(name))) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;129</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 129: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 129: statement not executed.">            <span class="keyword">if</span> (!fragment) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;130</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 130: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 130: statement not executed.">                result.setExpires(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;131</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="comment">// TODO should we return now by fragments to avoid putting the header to the response?</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;132</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;133</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;134</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 134: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 134: statement not executed.">        <span class="keyword">super</span>.setDateHeader(name, value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;135</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;136</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;137</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;138</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Add the date of a header</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;139</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;140</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> name The header name</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;141</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The date</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;142</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;143</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 143: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 143: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> addDateHeader(String name, <span class="keyword">long</span> value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;144</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 144: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 144: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;145</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 145: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 145: statement not executed.">            log.debug(<span class="string">"dateheader: "</span> + name + <span class="string">": "</span> + value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;146</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;147</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;148</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// only set the last modified value, if a complete page is cached</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;149</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 149: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 149: statement not executed.">        <span class="keyword">if</span> ((lastModified != CacheFilter.LAST_MODIFIED_OFF) &amp;&amp; (CacheFilter.HEADER_LAST_MODIFIED.equalsIgnoreCase(name))) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;150</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 150: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 150: statement not executed.">            <span class="keyword">if</span> (!fragment) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;151</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 151: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 151: statement not executed.">                result.setLastModified(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;152</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="comment">// TODO should we return now by fragments to avoid putting the header to the response?</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;153</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;154</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;155</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// implement RFC 2616 14.21 Expires (without max-age)</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;156</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 156: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 156: statement not executed.">        <span class="keyword">if</span> ((expires != CacheFilter.EXPIRES_OFF) &amp;&amp; (CacheFilter.HEADER_EXPIRES.equalsIgnoreCase(name))) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;157</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 157: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 157: statement not executed.">            <span class="keyword">if</span> (!fragment) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;158</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 158: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 158: statement not executed.">                result.setExpires(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;159</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="comment">// TODO should we return now by fragments to avoid putting the header to the response?</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;160</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } </SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;161</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;162</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 162: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 162: statement not executed.">        <span class="keyword">super</span>.addDateHeader(name, value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;163</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;164</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;165</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;166</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Set a header field</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;167</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;168</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> name The header name</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;169</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The header value</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;170</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;171</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 171: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 171: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setHeader(String name, String value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;172</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 172: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 172: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;173</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 173: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 173: statement not executed.">            log.debug(<span class="string">"header: "</span> + name + <span class="string">": "</span> + value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;174</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;175</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;176</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 176: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 176: statement not executed.">        <span class="keyword">if</span> (CacheFilter.HEADER_CONTENT_TYPE.equalsIgnoreCase(name)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;177</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 177: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 177: statement not executed.">            result.setContentType(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;178</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;179</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;180</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 180: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 180: statement not executed.">        <span class="keyword">if</span> (CacheFilter.HEADER_CONTENT_ENCODING.equalsIgnoreCase(name)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;181</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 181: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 181: statement not executed.">            result.setContentEncoding(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;182</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;183</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;184</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 184: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 184: statement not executed.">        <span class="keyword">super</span>.setHeader(name, value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;185</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;186</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;187</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;188</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Add a header field</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;189</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;190</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> name The header name</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;191</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The header value</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;192</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;193</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 193: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 193: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> addHeader(String name, String value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;194</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 194: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 194: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;195</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 195: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 195: statement not executed.">            log.debug(<span class="string">"header: "</span> + name + <span class="string">": "</span> + value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;196</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;197</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;198</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 198: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 198: statement not executed.">        <span class="keyword">if</span> (CacheFilter.HEADER_CONTENT_TYPE.equalsIgnoreCase(name)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;199</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 199: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 199: statement not executed.">            result.setContentType(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;200</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;201</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;202</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 202: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 202: statement not executed.">        <span class="keyword">if</span> (CacheFilter.HEADER_CONTENT_ENCODING.equalsIgnoreCase(name)) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;203</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 203: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 203: statement not executed.">            result.setContentEncoding(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;204</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;205</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;206</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 206: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 206: statement not executed.">        <span class="keyword">super</span>.addHeader(name, value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;207</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;208</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;209</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;210</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Set the int value of the header</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;211</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;212</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> name The header name</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;213</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The int value</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;214</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;215</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 215: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 215: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setIntHeader(String name, <span class="keyword">int</span> value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;216</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 216: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 216: statement not executed.">        <span class="keyword">if</span> (log.isDebugEnabled()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;217</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 217: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 217: statement not executed.">            log.debug(<span class="string">"intheader: "</span> + name + <span class="string">": "</span> + value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;218</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;219</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;220</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 220: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 220: statement not executed.">        <span class="keyword">super</span>.setIntHeader(name, value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;221</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;222</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;223</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;224</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * We override this so we can catch the response status. Only</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;225</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * responses with a status of 200 (&lt;code&gt;SC_OK&lt;/code&gt;) will</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;226</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * be cached.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;227</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;228</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 228: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 228: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setStatus(<span class="keyword">int</span> status) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;229</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 229: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 229: statement not executed.">        <span class="keyword">super</span>.setStatus(status);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;230</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 230: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 230: statement not executed.">        <span class="keyword">this</span>.status = status;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;231</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;232</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;233</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;234</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * We override this so we can catch the response status. Only</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;235</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * responses with a status of 200 (&lt;code&gt;SC_OK&lt;/code&gt;) will</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;236</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * be cached.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;237</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;238</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 238: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 238: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> sendError(<span class="keyword">int</span> status, String string) <span class="keyword">throws</span> IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;239</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 239: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 239: statement not executed.">        <span class="keyword">super</span>.sendError(status, string);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;240</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 240: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 240: statement not executed.">        <span class="keyword">this</span>.status = status;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;241</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;242</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;243</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;244</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * We override this so we can catch the response status. Only</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;245</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * responses with a status of 200 (&lt;code&gt;SC_OK&lt;/code&gt;) will</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;246</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * be cached.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;247</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;248</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 248: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 248: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> sendError(<span class="keyword">int</span> status) <span class="keyword">throws</span> IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;249</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 249: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 249: statement not executed.">        <span class="keyword">super</span>.sendError(status);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;250</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 250: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 250: statement not executed.">        <span class="keyword">this</span>.status = status;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;251</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;252</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;253</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;254</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * We override this so we can catch the response status. Only</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;255</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * responses with a status of 200 (&lt;code&gt;SC_OK&lt;/code&gt;) will</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;256</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * be cached.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;257</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;258</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 258: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 258: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setStatus(<span class="keyword">int</span> status, String string) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;259</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 259: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 259: statement not executed.">        <span class="keyword">super</span>.setStatus(status, string);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;260</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 260: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 260: statement not executed.">        <span class="keyword">this</span>.status = status;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;261</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;262</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;263</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;264</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * We override this so we can catch the response status. Only</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;265</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * responses with a status of 200 (&lt;code&gt;SC_OK&lt;/code&gt;) will</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;266</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * be cached.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;267</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;268</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 268: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 268: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> sendRedirect(String location) <span class="keyword">throws</span> IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;269</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 269: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 269: statement not executed.">        <span class="keyword">this</span>.status = SC_MOVED_TEMPORARILY;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;270</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 270: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 270: statement not executed.">        <span class="keyword">super</span>.sendRedirect(location);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;271</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;272</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;273</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;274</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Retrieves the captured HttpResponse status.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;275</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;276</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 276: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 276: method not entered.">    <span class="keyword">public</span> <span class="keyword">int</span> getStatus() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;277</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 277: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 277: statement not executed.">        <span class="keyword">return</span> status;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;278</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;279</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;280</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;281</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Set the locale</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;282</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;283</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@param</span> value The locale</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;284</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;285</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 285: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 285: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> setLocale(Locale value) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;286</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 286: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 286: statement not executed.">        <span class="keyword">super</span>.setLocale(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;287</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 287: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 287: statement not executed.">        result.setLocale(value);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;288</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;289</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;290</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;291</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Get an output stream</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;292</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;293</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@throws</span> IOException</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;294</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;295</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 295: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 295: method not entered.">    <span class="keyword">public</span> ServletOutputStream getOutputStream() <span class="keyword">throws</span> IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;296</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        <span class="comment">// Pass this faked servlet output stream that captures what is sent</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;297</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 297: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 297: statement not executed.">        <span class="keyword">if</span> (cacheOut == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;298</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 298: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 298: statement not executed.">            cacheOut = <span class="keyword">new</span> SplitServletOutputStream(result.getOutputStream(), <span class="keyword">super</span>.getOutputStream());</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;299</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;300</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;301</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 301: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 301: statement not executed.">        <span class="keyword">return</span> cacheOut;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;302</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;303</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;304</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;305</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * Get a print writer</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;306</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     *</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;307</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@throws</span> IOException</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;308</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;309</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 309: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 309: method not entered.">    <span class="keyword">public</span> PrintWriter getWriter() <span class="keyword">throws</span> IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;310</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 310: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 310: statement not executed.">        <span class="keyword">if</span> (cachedWriter == <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;311</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 311: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 311: statement not executed.">            String encoding = getCharacterEncoding();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;312</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 312: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 312: statement not executed.">            <span class="keyword">if</span> (encoding != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;313</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 313: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 313: statement not executed.">                cachedWriter = <span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> OutputStreamWriter(getOutputStream(), encoding));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;314</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            } <span class="keyword">else</span> { <span class="comment">// using the default character encoding</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;315</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 315: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 315: statement not executed.">                cachedWriter = <span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> OutputStreamWriter(getOutputStream()));</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;316</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;317</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;318</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;319</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 319: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 319: statement not executed.">        <span class="keyword">return</span> cachedWriter;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;320</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;321</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;322</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 322: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 322: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> flushBuffer() <span class="keyword">throws</span> IOException {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;323</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 323: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 323: statement not executed.">        <span class="keyword">super</span>.flushBuffer();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;324</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;325</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 325: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 325: statement not executed.">        <span class="keyword">if</span> (cacheOut != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;326</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 326: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 326: statement not executed.">            cacheOut.flush();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;327</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;328</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;329</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 329: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 329: statement not executed.">        <span class="keyword">if</span> (cachedWriter != <span class="keyword">null</span>) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;330</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 330: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 330: statement not executed.">            cachedWriter.flush();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;331</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;332</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;333</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;334</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;335</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> javax.servlet.ServletResponseWrapper#isCommitted()</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;336</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;337</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 337: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 337: method not entered.">    <span class="keyword">public</span> <span class="keyword">boolean</span> isCommitted() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;338</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 338: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 338: statement not executed.">        <span class="keyword">return</span> <span class="keyword">super</span>.isCommitted() || (result.getOutputStream() == <span class="keyword">null</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;339</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;340</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;341</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;342</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> javax.servlet.ServletResponseWrapper#reset()</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;343</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;344</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 344: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 344: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> reset() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;345</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 345: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 345: statement not executed.">        <span class="keyword">if</span> (!isCommitted()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;346</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 346: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 346: statement not executed.">            <span class="keyword">super</span>.reset();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;347</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 347: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 347: statement not executed.">            cachedWriter = <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;348</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 348: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 348: statement not executed.">            result = <span class="keyword">new</span> ResponseContent();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;349</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 349: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 349: statement not executed.">            cacheOut = <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;350</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 350: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 350: statement not executed.">            fragment = <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;351</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 351: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 351: statement not executed.">            status = SC_OK;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;352</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 352: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 352: statement not executed.">            expires = CacheFilter.EXPIRES_ON;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;353</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 353: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 353: statement not executed.">            lastModified = CacheFilter.LAST_MODIFIED_INITIAL;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;354</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;355</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 355: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 355: statement not executed.">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Can't reset CacheHttpServletResponseWrapper, because it's already committed!"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;356</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;357</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;358</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;359</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    <span class="comment">/**</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;360</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     * <span class="javadoc">@see</span> javax.servlet.ServletResponseWrapper#resetBuffer()</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;361</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine"><span class="comment">     */</span></SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;362</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 362: method not entered.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 362: method not entered.">    <span class="keyword">public</span> <span class="keyword">void</span> resetBuffer() {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;363</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 363: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 363: statement not executed.">        <span class="keyword">if</span> (!isCommitted()) {</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;364</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 364: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 364: statement not executed.">            <span class="keyword">super</span>.resetBuffer();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;365</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 365: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 365: statement not executed.">            cachedWriter = <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;366</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 366: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 366: statement not executed.">            result = <span class="keyword">new</span> ResponseContent();</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;367</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 367: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 367: statement not executed.">            cacheOut = <span class="keyword">null</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;368</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 368: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 368: statement not executed.">            fragment = <span class="keyword">false</span>;</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;369</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">// The resetBuffer method clears content in the buffer if the</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;370</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">            <span class="comment">// response is not committed without clearing the headers and status code.</span></SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;371</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        } <span class="keyword">else</span> {</SPAN></TD></TR><TR><TD align="right" class="lineCountHilight">
+&nbsp;372</TD>
+<TD align="right" class="coverageCountHilight">
+<A title="Line 372: statement not executed.">&nbsp;0</A>
+</TD><TD class="srcCell"><SPAN class="srcLineHilight"><A title="Line 372: statement not executed.">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Can't reset buffer CacheHttpServletResponseWrapper, because it's already committed!"</span>);</A>
+</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;373</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">        }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;374</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">    }</SPAN></TD></TR><TR><TD align="right" class="lineCount">
+&nbsp;375</TD>
+<TD align="right" class="coverageCount">
+&nbsp;&nbsp;
+</TD><TD class="srcCell"><SPAN class="srcLine">}</SPAN></TD></TR></TBODY></TABLE>
+<TABLE width="100%"><TR><TD class="hbreak" colspan="6">&nbsp;</TD></TR>
+<TR><TD class="footer" colspan="6">
+<table>
+<tr>
+ <td><a target="_new" href="http://www.cenqua.com/clover?2T"><img alt="Clover" src="../../../../../img/logo.gif" border="0"></a></td><td nowrap><i>Report generated by </i><a target="_new" href="http://www.cenqua.com/clover?2T">Clover Code Coverage v1.3.9</a><i><BR>Mo Mrz 6 2006 19:30:50 CET</i>.</td>
+<td>&nbsp;</td><td style="BORDER-LEFT: #9c9c9c 1px solid;">&nbsp;</td><td>Open Source License registered to the OpenSymphony Project. This license of Clover is provided to support the development of OpenSymphony only. </td>
+</tr>
+</table>
+</td>
+</tr></TABLE>

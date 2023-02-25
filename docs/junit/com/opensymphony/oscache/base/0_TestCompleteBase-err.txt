@@ -1,0 +1,56 @@
+06.03.2006 19:30:31 com.opensymphony.oscache.base.Config loadProps
+INFO: Properties {cache.persistence.class=com.opensymphony.oscache.plugins.diskpersistence.DiskPersistenceListener, cache.path=/tmp/cachetagscache, cache.persistence.overflow.only=true, cache.memory=true}
+06.03.2006 19:30:31 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:31 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:31 com.opensymphony.oscache.plugins.diskpersistence.AbstractDiskPersistenceListener initFileCaching
+INFO: cache.path '/tmp/cachetagscache' does not exist, creating
+06.03.2006 19:30:31 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:31 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:32 com.opensymphony.oscache.base.Config loadProps
+INFO: Properties {cache.persistence.class=com.opensymphony.oscache.plugins.diskpersistence.DiskPersistenceListener, cache.path=/tmp/cachetagscache, cache.persistence.overflow.only=true, cache.memory=true}
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:32 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:34 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:34 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:34 com.opensymphony.oscache.base.Config loadProps
+INFO: Properties {cache.persistence.class=com.opensymphony.oscache.plugins.diskpersistence.DiskPersistenceListener, cache.path=/tmp/cachetagscache, cache.persistence.overflow.only=true, cache.memory=true}
+06.03.2006 19:30:34 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:34 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+06.03.2006 19:30:34 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:34 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache
+junit.framework.AssertionFailedError: Thread should have blocked until a new cache entry was ready
+	at junit.framework.Assert.fail(Assert.java:47)
+	at com.opensymphony.oscache.base.TestConcurrency$GetEntry.run(TestConcurrency.java:406)
+	at java.lang.Thread.run(Thread.java:534)
+06.03.2006 19:30:40 com.opensymphony.oscache.base.TestConcurrency testConcurrentStaleGets
+SCHWERWIEGEND: Thread #0 did not complete within [5] s 
+06.03.2006 19:30:42 com.opensymphony.oscache.base.Config loadProps
+INFO: Properties {cache.persistence.class=com.opensymphony.oscache.plugins.diskpersistence.DiskPersistenceListener, cache.path=/tmp/cachetagscache, cache.persistence.overflow.only=true, cache.memory=true}
+06.03.2006 19:30:42 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:42 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache

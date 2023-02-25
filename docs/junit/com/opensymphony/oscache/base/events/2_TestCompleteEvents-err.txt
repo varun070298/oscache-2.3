@@ -1,0 +1,6 @@
+06.03.2006 19:30:44 com.opensymphony.oscache.base.Config loadProps
+INFO: Properties {cache.persistence.class=com.opensymphony.oscache.plugins.diskpersistence.DiskPersistenceListener, cache.path=/tmp/cachetagscache, cache.persistence.overflow.only=true, cache.memory=true}
+06.03.2006 19:30:44 com.opensymphony.oscache.general.GeneralCacheAdministrator &lt;init&gt;
+INFO: Constructed GeneralCacheAdministrator()
+06.03.2006 19:30:44 com.opensymphony.oscache.general.GeneralCacheAdministrator createCache
+INFO: Creating new cache

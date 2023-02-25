@@ -1,0 +1,5 @@
+Best case with parsing took 15828ms for 1000000 iterations. (0.015828ms per call)
+Worst case with parsing took 34344ms for 1000000 iterations. (0.034344ms per call)
+Best case without parsing took 8625ms for 1000000 iterations. (0.008625ms per call)
+Worst case without parsing took 10469ms for 1000000 iterations. (0.010469ms per call)
+685 75 177 283 688 1006 
